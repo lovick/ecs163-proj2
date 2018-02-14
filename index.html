@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <!--<link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">-->
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
+        <title>Project 1 - Stack Overflow Developer Survey - Sven Olson</title>
+	</head>
+	<body>
+		<header>
+			<h2>Project 1 - Stack Overflow Developer Survey</h2>
+			<h3>Sven Olson&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;2/5/2018</h3>
+		</header>
+		<p>
+			I'll be looking at the Stack Overflow survey data. This data is from their yearly survey of all Stack Overflow users. 
+		</p>
+		<p>
+			Programming is stereotypically the kind of thing that's done in the middle of the night, in a dark room with green text on a black background. In reality, for many it's a day job done in the sunlight. Yet, given the choice, would software engineers choose to work in the middle of the night as opposed to during the day? And, would those that choose to do so say that the hardest part of their job is collaboration with others? Does this vary from country to country?
+		</p>
+		<div id="vis1"></div>
+		<p class="caption">
+			The above graphic is a parallel coordinates chart, with the respondants country of origin, preferred time to begin work, and whether or not they agree with the idea that communicating ideas with their peers is a challenge. The color changes on a logarithmic scale with the number of respondants that provided that option. Hence, the options in red are signficantly more common than the others.
+		</p>
+		<p>
+			On the whole, it seems like there's little credence to the idea that those that dislike communication would prefer to work in the middle of the night while others sleep. It seems like the majority would prefer to start between 7:00 AM and 11:00 AM, with little variation from country to country. It also seems that this same majority would state that they have difficulty conveying their ideas to their peers, and there doesn't seem to be much correlation between these hypothetical night owls and challenging communication.
+		</p>
+		<p>
+			A parallel coordinates chart works well for this data because it allows for the trends to be highlighted. It does involve an excess of visual information and may not be the best suited form of visualization, but with the colors highlighting it is able to be effective.
+		</p>
+
+		<p>
+			Next, I'll investigate job and career satisfaction relative to the frequency with which code is committed. This diagram is a sankey diagram, which conveys the relative flow of people to the frequency with which they commit code.
+		</p>
+		<div id="vis2"></div>
+		<p class="caption">
+			The columns are Developer Type, how often they commit code, their satisfaction with their job, and their satisfaction with their career. The colors act as broad categories, intended to allow tracks to be followed from data point to data point.
+		</p>
+		<p>
+			As you can see, the majority of developers seem to be at least satisfied with their jobs, if not to the level of a 10. The majority that commit multiple times a day make up the highest amount that are satisfied with their jobs and careers to the 7, 8, 9 and 10 level.
+		</p>
+
+		<p>
+			My final question is approaching the subject of the need for a formal education. Is there a correlation between having a formal education, and having a satisfying job? Programming is a field that has many success stories without a formal education, so it's often questioned whether one is necessary.
+		</p>
+		<div id="vis3"></div>
+		<p class="caption">
+			This visualization shows the number they gave from 1 to 10 for job satisfaction and the value they place on a formal education. The size and color of the circles show the number of people that gave that answer on a linear scale.
+		</p>
+		<p>
+			It's clear that there's some correlation between satisfying jobs and a formal education. Most of those that are pleased with their jobs think that a formal education is at least somewhat important. It may be possible to succeed without a formal education, but it's easier to be in a happy place with one.
+		</p>
+
+		<p>
+			On the whole, we've seen some of the trends among developers that are overall successful. Most want to begin work in the morning. Most prefer to commit code multiple times a day, and believe that there's some significance to the importance of a formal education. The most interesting element here was the overall preference toward some formal education. The message often heard surrounding programming and software development is that it's easy to teach yourself, but most seem to recognize that there are benefits outside of classes to a formal education.
+		</p>
+
+		<script src="scripts/d3.v4.min.js"  charset="utf-8"></script>
+		<script src="scripts/d3-sankey.js" charset="utf-8"></script>
+		<script src="scripts/vis1.js" charset="utf-8"></script>
+		<script src="scripts/vis2.js" charset="utf-8"></script>
+		<script src="scripts/vis3.js" charset="utf-8"></script>
+	</body>
+</html>
