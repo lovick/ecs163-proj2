@@ -1,7 +1,7 @@
 function vis1() {
-    var margin = {top: 30, right: 10, bottom: 10, left: 50},
-        width = innerWidth*.9 - margin.left - margin.right,
-        height = innerHeight*.9 - margin.top - margin.bottom;
+    var margin = {top: 30, right: 50, bottom: 50, left: 50},
+        width = (innerWidth - margin.left - margin.right)*.5,
+        height = (innerHeight - margin.top - margin.bottom);
 
     var parseDate = d3.timeParse("%Y-%m-%d");
     var x = d3.scaleTime().rangeRound([0,width]);
@@ -16,9 +16,12 @@ function vis1() {
         .range(["steelblue", "crimson"])
         .interpolate(d3.interpolateHcl);
 
+    var xAxis = d3.axisBottom(x);
+    var yAxis = d3.axisLeft(y);
+
     var vis1 = d3.select("#largeGraph").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("width", width)
+        .attr("height", height)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -39,6 +42,12 @@ function vis1() {
                 return c(vVal(d));
             });
 
+        vis1.append("g")
+            .attr("transform", "translate(0,"+(height)+")")
+            .call(xAxis);
+        vis1.append("g")
+            .attr("transform", "translate(0, 0)")
+            .call(yAxis);
         /*var g = vis1.selectAll(".dimension")
             .data(data)
             .enter().append("g")

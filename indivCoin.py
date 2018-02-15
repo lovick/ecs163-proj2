@@ -6,7 +6,7 @@ dic = {}
 #    reader = csv.reader(f, delimiter=',', quotechar='"')
 #    for row in reader:
         #dic[row[3]] = dic.get(row[3], 0) + 1
-coinSymbol = "BTC"
+coinSymbol = "DOGE"
 desiredValues = [1, 2, 3, 5, 6, 7, 8]
 out = open(coinSymbol+'Data.csv', 'w+')
 with open('crypto-markets.csv', newline='') as f:
