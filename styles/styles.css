@@ -55,3 +55,22 @@ cursor: move;
     width: 70%;
     font-size: 80%;
 }
+
+#container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    /* 50% candlestick, 10% time thing, 40% small multiples*/
+    grid-template-rows: 50% 10% 40%;
+}
+
+#barChart {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+#candlestick {
+    grid-column: 1;
+    grid-row: 1;
+}

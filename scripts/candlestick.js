@@ -1,8 +1,8 @@
 function candlestick(inData, coin) {
     var data = inData.filter(d => d.symbol == coin);
 
-    var margin = {top: 30, right: 50, bottom: 50, left: 50},
-        width = (innerWidth - margin.left - margin.right),
+    var margin = {top: 10, right: 50, bottom: 50, left: 50},
+        width = (innerWidth - margin.left - margin.right)*0.75,
         height = (innerHeight - margin.top - margin.bottom)*0.5;
 
     var parseDate = d3.timeParse("%Y-%m-%d");
