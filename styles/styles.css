@@ -13,11 +13,8 @@ img {
 }
 svg {
     overflow: visible;
-}
-      
-svg {
     font: 10px sans-serif;
-  }
+}
 
 .background path {
 fill: none;
@@ -44,7 +41,7 @@ shape-rendering: crispEdges;
 }
 
 .axis text {
-font-size: 15px;
+font-size: 10px;
 text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
 cursor: move;
 }

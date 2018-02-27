@@ -1,9 +1,9 @@
 function scatter(inData, inDay) {
     console.log("Initializing Scatter");
     var parseDate = d3.timeParse("%Y-%m-%d");
-    var margin = {top: 20, right: 10, bottom: 75, left: 70},
+    var margin = {top: 20, right: 40, bottom: 75, left: 70},
         width = (innerWidth - margin.left - margin.right)*0.18,
-        height = (innerHeight - margin.top - margin.bottom)*0.55;
+        height = (innerHeight - margin.top - margin.bottom)*0.52;
 
     var vis3 = d3.select("#scatter").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -72,7 +72,7 @@ function scatter(inData, inDay) {
                     "translate(" + (width/2) + " ," + 
                                 (height + margin.top + 45) + ")")
             .style("text-anchor", "middle")
-            .text("Radius + Color show volume of transactions"); 
+            .text("Radius & color show transaction volume"); 
     }
 
     this.update(inData, inDay);

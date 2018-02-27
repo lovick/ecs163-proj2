@@ -6,7 +6,8 @@ d3.csv('cData.csv', function (data) {
 
     candle = new candlestick(data, curCoin);
     scat = new scatter(data, "2018-02-05");
-    var don = new donutMultiples(150, data, "2017-12-25", "open");
+    //var don = new donutMultiples(150, data, "2017-12-25", "open");
+    lineChart(data);
     var time = new timeBrush(data, curCoin, updateCandleRange);
     //var don2 = new donutMultiples(300, data, "2017-12-24", "close");
 
