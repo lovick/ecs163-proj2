@@ -1,4 +1,4 @@
-function lineChart(data) {
+function lineChart(inData, updateFunc) {
 
     var margin = {top: 30, right: 50, bottom: 50, left: 50},
         width = (innerWidth - margin.left - margin.right),
@@ -17,52 +17,63 @@ function lineChart(data) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    this.update = function(data, upd) {
+        svg.selectAll('*').remove();
 
-    // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return parseDate(d.date); }));
-    y.domain(d3.extent(data, function(d) { return +d.close; }));
+        // Scale the range of the data
+        x.domain(d3.extent(data, function(d) { return parseDate(d.date); }));
+        y.domain(d3.extent(data, function(d) { return +d.close; }));
 
-    // Nest the entries by symbol
-    var dataNest = d3.nest()
-        .key(function(d) {return d.symbol;})
-        .entries(data);
+        // Nest the entries by symbol
+        var dataNest = d3.nest()
+            .key(function(d) {return d.symbol;})
+            .entries(data);
 
-    // set the colour scale
-    var color = d3.scaleOrdinal(d3.schemeCategory10);
+        // set the colour scale
+        var c = d3.scaleOrdinal(d3.schemeCategory10);
 
-    legendSpace = width/dataNest.length; // spacing for the legend
 
-    // Loop through each symbol / key
-    dataNest.forEach(function(d,i) { 
+        legendSpace = width/10; // spacing for the legend
 
-        svg.append("path")
-            .attr("class", "line")
-            .style("stroke", function() { // Add the colours dynamically
-                return d.color = color(d.key); 
-            })
-            .style("fill", "none")
-            .attr("d", line(d.values));
+        // Loop through each symbol / key
+        dataNest.forEach(function(d,i) { 
 
-        // Add the Legend
-        svg.append("text")
-            .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
-            .attr("y", -margin.top/2) // was height + (margin.bottom/2)+ 5
-            .attr("class", "legend")    // style the legend
-            .style("stroke", function() { // Add the colours dynamically
-                return d.color = color(d.key); 
-            })
-            .text(d.key); 
-    });
+            svg.append("path")
+                .attr("class", "line")
+                .style("stroke", function() { // Add the colours dynamically
+                    return c(d.key); 
+                })
+                .style("fill", "none")
+                .attr("d", line(d.values));
 
-    // Add the X Axis
-    svg.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+                svg.append("text")
+                    .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
+                    .attr("y", -margin.top/2) // was height + (margin.bottom/2)+ 5
+                    .attr("class", "legend")    // style the legend
+                    .style("fill", function() { // Add the colours dynamically
+                        return c(d.key); 
+                    })
+                    .style("text-anchor", "middle")
+                    .style("font-size", "20px")
+                    .text(d.key);
 
-    // Add the Y Axis
-    svg.append("g")
-        .attr("class", "axis")
-        .call(d3.axisLeft(y));
+        });
 
+        // Add the X Axis
+        svg.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+        // Add the Y Axis
+        svg.append("g")
+            .attr("class", "axis")
+            .call(d3.axisLeft(y));
+    }
+
+    this.updateDate = function(inData, start, end) {
+        this.update(inData.filter(d => (d.date >= start) && (d.date <= end)));
+    }
+
+    this.update(inData, updateFunc);
 }

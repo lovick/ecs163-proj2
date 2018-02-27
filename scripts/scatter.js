@@ -3,7 +3,7 @@ function scatter(inData, inDay) {
     var parseDate = d3.timeParse("%Y-%m-%d");
     var margin = {top: 20, right: 40, bottom: 75, left: 70},
         width = (innerWidth - margin.left - margin.right)*0.18,
-        height = (innerHeight - margin.top - margin.bottom)*0.52;
+        height = (innerHeight - margin.top - margin.bottom)*0.45;
 
     var vis3 = d3.select("#scatter").append("svg")
         .attr("width", width + margin.left + margin.right)

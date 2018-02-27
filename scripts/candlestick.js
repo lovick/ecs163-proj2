@@ -32,7 +32,7 @@ function candlestick(inData, coinIn) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    this.update = function(inData, coin, s, e) {
+    this.update = function(inData, coin) {
         console.log("Updating Candlestick");
         vis1.selectAll('*').remove();
         coinStor = coin;
