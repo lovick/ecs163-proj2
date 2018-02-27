@@ -48,7 +48,7 @@ function lineChart(inData, updateFunc) {
 
                 svg.append("text")
                     .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
-                    .attr("y", -margin.top/2) // was height + (margin.bottom/2)+ 5
+                    .attr("y", 10-margin.top/2) // was height + (margin.bottom/2)+ 5
                     .attr("class", "legend")    // style the legend
                     .style("fill", function() { // Add the colours dynamically
                         return c(d.key); 
@@ -69,6 +69,15 @@ function lineChart(inData, updateFunc) {
         svg.append("g")
             .attr("class", "axis")
             .call(d3.axisLeft(y));
+
+        // Y Axis Label
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left + 60)
+            .attr("x",0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Value in Dollars"); 
     }
 
     this.updateDate = function(inData, start, end) {

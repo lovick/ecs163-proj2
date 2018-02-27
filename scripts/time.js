@@ -40,6 +40,13 @@ function timeBrush(dIn, cIn, func) {
             .call(d3.brushX()
                 .extent([[0, 0], [width, height]])
                 .on("end", brushended));
+
+        svg.append("text")             
+            .attr("transform",
+                    "translate(" + (width/2) + " ," + 
+                                (height+25) + ")")
+            .style("text-anchor", "middle")
+            .text("Click and drag above to change the timeframe"); 
     }
 
     this.update(dIn, cIn);
