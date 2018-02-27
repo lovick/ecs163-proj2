@@ -16,7 +16,7 @@ function barChart(data, day) {
     var y = d3.scaleBand().rangeRound([height, 0]);
 
     this.update = function(dOri, day) {
-        var dIn = dOri.filter()
+        var dIn = dOri.filter(d => parseDate(d.date) == parseDate(day));
         x.domain([0, d3.max(dIn, function(d) { return +d.spread; })]);
         y.domain(dIn.map(function(d) { return d.symbol; }));
     

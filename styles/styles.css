@@ -65,7 +65,7 @@ cursor: move;
     grid-template-rows: 50% 10% 40%;
 }
 
-#barChart {
+#scatter {
     grid-column: 2;
     grid-row: 1 / 3;
 }
